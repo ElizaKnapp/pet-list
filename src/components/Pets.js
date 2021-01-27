@@ -39,12 +39,21 @@ class Pets extends React.Component {
     });
   };
 
+  handleRemoval = petId => {
+    let pets = [...this.state.pets];
+    pets = pets.filter(pet => pet.id !== petId);
+
+    this.setState({
+      pets: pets
+    });
+  };
+
   render() {
     return (
       <>
         {this.state.pets.map(pet => (
           <>
-            <OnePet id={pet.id} name={pet.name} species={pet.species} age={pet.age} alive={pet.alive} handleDeath={petId => this.handleDeath(petId)} handleRevival={petId => this.handleRevival(petId)} />
+            <OnePet id={pet.id} name={pet.name} species={pet.species} age={pet.age} alive={pet.alive} handleDeath={petId => this.handleDeath(petId)} handleRevival={petId => this.handleRevival(petId)} handleRemoval={petId => this.handleRemoval(petId)} />
           </>
         ))}
       </>

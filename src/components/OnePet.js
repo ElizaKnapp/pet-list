@@ -31,6 +31,18 @@ class OnePet extends React.Component {
       );
     }
   };
+
+  remove = () => {
+    if (!this.props.alive) {
+      return (
+        <p>
+          <b>Danger Zone!</b> <br></br>
+          <button onClick={() => this.props.handleRemoval(this.props.id)}>Remove Pet</button>
+        </p>
+      );
+    }
+  };
+
   render() {
     return (
       <>
@@ -39,6 +51,7 @@ class OnePet extends React.Component {
             {this.props.name} is a very cute {this.props.species} of age {this.props.age}
           </li>
           {this.life()}
+          {this.remove()}
         </div>
       </>
     );
