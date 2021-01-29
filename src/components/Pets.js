@@ -1,5 +1,6 @@
 import React from "react";
 import OnePet from "./OnePet";
+import AddPet from "./AddPet";
 
 class Pets extends React.Component {
   constructor(props) {
@@ -48,6 +49,30 @@ class Pets extends React.Component {
     });
   };
 
+  handleAddition = (petName, petSpecies, petAge) => {
+    let newPet = {
+      id: 1,
+      name: petName,
+      species: petSpecies,
+      age: petAge,
+      alive: true
+    };
+
+    /*
+    if (this.state.pets.length > 0) {
+      newPet["id"] = this.state.pets[this.state.pets.length - 1].id + 1;
+    } else {
+      newPet["id"] = 1;
+    }
+    */
+
+    let addList = this.state.pets.concat(newPet);
+
+    this.setState({
+      pets: addList
+    });
+  };
+
   render() {
     return (
       <>
@@ -56,6 +81,7 @@ class Pets extends React.Component {
             <OnePet id={pet.id} name={pet.name} species={pet.species} age={pet.age} alive={pet.alive} handleDeath={petId => this.handleDeath(petId)} handleRevival={petId => this.handleRevival(petId)} handleRemoval={petId => this.handleRemoval(petId)} />
           </>
         ))}
+        <AddPet onAddPet={(petName, petSpecies, petAge) => this.handleAddition(petName, petSpecies, petAge)} />
       </>
     );
   }
