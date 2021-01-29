@@ -7,10 +7,7 @@ class Pets extends React.Component {
     super(props);
 
     this.state = {
-      pets: [
-        { id: 1, name: "hobbitz", species: "dragon", age: "3", alive: true },
-        { id: 2, name: "fluffy", species: "guinea pig", age: "2", alive: true }
-      ]
+      pets: []
     };
   }
 
@@ -50,6 +47,10 @@ class Pets extends React.Component {
   };
 
   handleAddition = (petName, petSpecies, petAge) => {
+    if (petName === "" || petSpecies === "" || petAge === "") {
+      return alert("YOU NEED TO FILL IN ALL THE BLANKS");
+    }
+
     let addList = [...this.state.pets];
 
     let newPet = {
