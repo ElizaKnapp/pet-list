@@ -32,6 +32,11 @@ class AddPet extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onAddPet(this.state.petName, this.state.petSpecies, this.state.petAge);
+    let petClone = { ...this.state };
+    petClone.petName = "";
+    petClone.petSpecies = "";
+    petClone.petAge = "";
+    this.setState(petClone);
   };
 
   render() {
@@ -40,13 +45,13 @@ class AddPet extends React.Component {
         <h2>Add Pets</h2>
         <form onSubmit={this.handleSubmit}>
           <label>Enter Pet Name</label>
-          <input type="text" onChange={this.handleAddTitle} />
+          <input value={this.state.petName} type="text" onChange={this.handleAddTitle} />
 
           <label>Enter Pet Species</label>
-          <input type="text" onChange={this.handleAddSpecies} />
+          <input value={this.state.petSpecies} type="text" onChange={this.handleAddSpecies} />
 
           <label>Enter Pet Age</label>
-          <input type="text" onChange={this.handleAddAge} />
+          <input value={this.state.petAge} type="text" onChange={this.handleAddAge} />
 
           <input type="submit"></input>
         </form>
