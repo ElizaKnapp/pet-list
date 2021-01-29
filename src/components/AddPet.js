@@ -47,6 +47,8 @@ class AddPet extends React.Component {
 
           <label>Enter Pet Age</label>
           <input type="text" onChange={this.handleAddAge} />
+
+          <input type="submit"></input>
         </form>
       </>
     );

@@ -50,23 +50,22 @@ class Pets extends React.Component {
   };
 
   handleAddition = (petName, petSpecies, petAge) => {
+    let addList = [...this.state.pets];
+
     let newPet = {
-      id: 1,
       name: petName,
       species: petSpecies,
       age: petAge,
       alive: true
     };
 
-    /*
-    if (this.state.pets.length > 0) {
-      newPet["id"] = this.state.pets[this.state.pets.length - 1].id + 1;
+    if (addList.length > 0) {
+      newPet["id"] = addList[addList.length - 1].id + 1;
     } else {
       newPet["id"] = 1;
     }
-    */
 
-    let addList = this.state.pets.concat(newPet);
+    addList.push(newPet);
 
     this.setState({
       pets: addList
